@@ -6,7 +6,7 @@ ARG FROM_IMG_HASH=""
 FROM ${DOCKER_REGISTRY}/${DOCKER_REPO}/${FROM_IMG_NAME}:${FROM_IMG_TAG}${DOCKER_IMG_HASH}
 
 ARG EB_PKG=GCCcore-6.4.0.eb
-RUN apt-get install -y xsltproc pkgconf
+USER root
 USER user
 RUN eb --dry-run-short ${EB_PKG} --robot \
  && eb ${EB_PKG} --robot
